@@ -14,4 +14,20 @@ export default class ProjectController extends Controller {
         ctx.body = project;
     }
 
+    public async update(){
+
+        const {ctx} = this;
+        const proj = ctx.request.body;
+
+        ctx.body =  await ctx.service.project.update(proj);
+    }
+
+    public async show(){
+        const {id} = this.ctx.params;
+
+        this.ctx.body = await this.ctx.service.project.show(id)
+
+    }
 }
+
+

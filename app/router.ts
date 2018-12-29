@@ -8,6 +8,7 @@ export default (app: Application) => {
   router.resources('user', '/api/user', controller.user);
 
   router.resources('project', '/api/project', controller.project);
+  router.resources('config', '/api/config', controller.config);
 
   router.post('/api/login', controller.login.login);
 };

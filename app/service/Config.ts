@@ -5,7 +5,7 @@
 import { Service } from 'egg';
 
 
-export default class User extends Service {
+export default class Config extends Service {
 
 
 
@@ -15,17 +15,20 @@ export default class User extends Service {
      * @param password 
      */
     public async create(name: string, key:string,
-        desc: string = '', status: Number = 0, owner: string[], 
-        managers: string[] = [], users: string[] = []) {
-        const project = await this.app.model.Project.create({
+        desc: string = '', status: Number = 0, p_id: string, 
+        is_top:boolean = false,
+        value = {}, model = {}
+       ) {
+        const project = await this.app.model.Config.create({
             name,
             key,
             desc,
             status,
             create_at: new Date(),
-            owner,
-            managers,
-            users
+            p_id,
+            is_top,
+            value,
+            model
         })
         return project;
     }
